@@ -42,7 +42,12 @@ render(){
                 cardElevation={3}
                 cardMaxElevation={3}
                 cornerRadius={13}>
-                    <Image style={styles.cardImage} source={item.img} />
+                  <Image style={styles.cardImage} source={item.img} />
+                  {
+                    item.stock === false ? (
+                      <Image style={styles.outofstockImage} source={require('../assets/res/outofstock.png')} />
+                    ) : (null)
+                  }
                 </CardView>
             </TouchableOpacity>
             <View style={styles.productDetailsLayout}>
@@ -73,6 +78,13 @@ const styles = StyleSheet.create({
     height:"100%",
     resizeMode : "stretch"
   },
+  outofstockImage: {
+    width:"28%",
+    height:"6%",
+    marginTop:25,
+    resizeMode : "stretch",
+    position:"absolute",
+  },
   productDetailsLayout: {
     width:"87%",
     flexDirection:"row",
@@ -93,7 +105,6 @@ const styles = StyleSheet.create({
     fontFamily:"Poppins-SemiBold",
     color:colors.secondary,
     justifyContent:"center",
-    marginLeft:23,
     marginTop:2,
   },
 });
